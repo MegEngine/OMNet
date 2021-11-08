@@ -1,0 +1,32 @@
+{
+    "dataset_type": "modelnet_ts_npy",
+    "transform_type": "modelnet_ts_rpmnet_noise",
+    "net_type": "iter_delaymask_noshare",
+    "loss_type": "iter_l1_l2",
+    "loss_alpha1": 1,
+    "loss_alpha2": 4,
+    "margin": 0.2,
+    "eval_type": [
+        "val",
+        "test"
+    ],
+    "major_metric": "score",
+    "metric_rule": "Decende",
+    "num_points": 1024,
+    "rot_mag": 45,
+    "trans_mag": 0.5,
+    "partial_ratio": [
+        0.7,
+        0.7
+    ],
+    "noise_std": 0.01,
+    "titer": 4,
+    "overlap_dist": 0.1,
+    "learning_rate": 1e-4,
+    "gamma": 1,
+    "num_epochs": 10000,
+    "train_batch_size": 16,
+    "eval_batch_size": 32,
+    "save_summary_steps": 100,
+    "num_workers": 2
+}
