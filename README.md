@@ -1,20 +1,19 @@
 # [ICCV 2021] OMNet: Learning Overlapping Mask for Partial-to-Partial Point Cloud Registration
 
-This is the MegEngine implementation of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf).
+This is the official implementation of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf).
 
-The illustration of our pipeline:
-![image](https://user-images.githubusercontent.com/46584121/137711441-62672d6b-f5e5-4946-86de-fecdb9c6b42a.png)
+Our presentation video: [[Youtube](https://www.youtube.com/watch?v=u2lTKsom8oU)][[Bilibili](https://www.bilibili.com/video/BV1Ef4y1J7XP/)].
+
+## Our Poster
+
+![image](./images/OMNet_poster.png)
 
 ## Dependencies
 
-Main requirements:
-
-* python==3.6.9
 * MegEngine==1.6.0
+* Other requirements please refer to`requirements.txt`.
 
-Other requirements please refer to `requirements.txt`.
-
-## Data preparation
+## Data Preparation
 
 ### OS data
 
@@ -53,7 +52,7 @@ Then, you need to put the data into `./dataset/data`, and the contents of direct
     └── val [1002 entries exceeds filelimit, not opening dir]
 ```
 
-## Training and evaluation
+## Training and Evaluation
 
 ### Begin training
 
@@ -75,9 +74,7 @@ python3 evaluate.py --model_dir=./experiments/experiment_omnet --restore_file=./
 
 This model weight is for TS data with Gaussian noise. Note that the performance is a little bit worse than our Pytorch implementation.
 
-## Pretrained model
-
-MegEngine checkpoint for ModelNet40 dataset can be download via [Google Drive]() or [Github Release]().
+MegEngine checkpoint for ModelNet40 dataset can be download via [Google Drive](https://drive.google.com/file/d/1xkWQeMabQhO4zqg6X3aj_VQCMHgeBUsD/view?usp=sharing) or [Github Release](https://github.com/megvii-research/OMNet/releases/tag/v1.0.0).
 
 ## Citation
 
@@ -91,3 +88,12 @@ MegEngine checkpoint for ModelNet40 dataset can be download via [Google Drive]()
     pages={3132-3141}
 }
 ```
+
+## Acknowledgments
+
+In this project we use (parts of) the official implementations of the following works:
+
+* [RPMNet](https://github.com/yewzijian/RPMNet) (ModelNet40 preprocessing and evaluation)
+* [PRNet](https://github.com/WangYueFt/prnet) (ModelNet40 preprocessing)
+
+We thank the respective authors for open sourcing their methods.
