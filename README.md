@@ -72,9 +72,9 @@ You need to download the pretrained checkpoint and run:
 python3 evaluate.py --model_dir=./experiments/experiment_omnet --restore_file=./experiments/experiment_omnet/val_model_best.pth --only_weights
 ```
 
-This model weight is for TS data with Gaussian noise. Note that the performance is a little bit worse than our Pytorch implementation.
+This model weight is for TS data with Gaussian noise. Note that the performance is a little bit worse than the results reported in our paper.
 
-MegEngine checkpoint for ModelNet40 dataset can be download via [Google Drive](https://drive.google.com/file/d/1xkWQeMabQhO4zqg6X3aj_VQCMHgeBUsD/view?usp=sharing) or [Github Release](https://github.com/megvii-research/OMNet/releases/tag/v1.0.0).
+MegEngine checkpoint for ModelNet40 dataset can be download via [Google Drive](https://drive.google.com/file/d/1xkWQeMabQhO4zqg6X3aj_VQCMHgeBUsD/view?usp=sharing) or [Github Release](https://github.com/megvii-research/OMNet/releases/download/V1.0.0/val_model_best.pth).
 
 ## Citation
 
