@@ -63,7 +63,7 @@ For ModelNet40 dataset, you can just run:
 python3 train.py --model_dir=./experiments/experiment_omnet/
 ```
 
-For other dataset, you need to add your own dataset class in `./dataset/data_loader.py`. Training with lower batch size, such as 16, may obtain worse performance.
+For other dataset, you need to add your own dataset class in `./dataset/data_loader.py`. Training with a lower batch size, such as 16, may obtain worse performance than training with a larger batch size, e.g., 64.
 
 ### Begin testing
 
