@@ -1,6 +1,6 @@
-# OMNet: Learning Overlapping Mask for Partial-to-Partial Point Cloud Registration
+# [ICCV 2021] OMNet: Learning Overlapping Mask for Partial-to-Partial Point Cloud Registration
 
-MegEngine implementation of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf).
+This is the MegEngine implementation of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf).
 
 The illustration of our pipeline:
 ![image](https://user-images.githubusercontent.com/46584121/137711441-62672d6b-f5e5-4946-86de-fecdb9c6b42a.png)
@@ -70,10 +70,10 @@ For other dataset, you need to add your own dataset class in `./dataset/data_loa
 You need to download the pretrained checkpoint and run:
 
 ```
-python3 evaluate.py --model_dir=./experiments/experiment_omnet --restore_file=./experiments/experiment_omnet/model_best.pth --only_weights
+python3 evaluate.py --model_dir=./experiments/experiment_omnet --restore_file=./experiments/experiment_omnet/val_model_best.pth --only_weights
 ```
 
-This model weight is for TS data with Gaussian noise. Note that the performance is a little bit worse than our Pytorch imlementation.
+This model weight is for TS data with Gaussian noise. Note that the performance is a little bit worse than our Pytorch implementation.
 
 ## Pretrained model
 
