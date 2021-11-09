@@ -133,7 +133,7 @@ def test(model, manager):
         manager.reset_metric_status("test")
         for data_batch in manager.dataloaders["test"]:
             # compute the real batch size
-            bs = data_batch["image"].shape[0]
+            bs = data_batch["points_src"].shape[0]
             # move to GPU if available
             data_batch = utils.tensor_mge(data_batch)
             # compute model output
