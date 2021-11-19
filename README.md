@@ -12,6 +12,64 @@ Our presentation video: [[Youtube](https://www.youtube.com/watch?v=u2lTKsom8oU)]
 
 * MegEngine==1.6.0
 * Other requirements please refer to`requirements.txt`.
+* Add`frequency_weighted_cross_entropy` to MegEngine source code.
+
+MegEngine==1.6.0 does not support `frequency_weighted_cross_entropy`, so I write this function based on `cross_entropy` in `loss.py` of the original MegEngine source code, whose location should be like this:
+
+(1) conda environment
+
+`[your_conda_env_path]/lib/[python3.x]/site-packages/megengine/functional/loss.py`.
+
+(2) original python environment
+
+`/usr/local/lib/[python3.x]/dist-packages/megengine/functional/loss.py`.
+
+Use your own path to replace the content in `[]`.
+
+```
+from .math import sum
+
+
+@_reduce_output
+def frequency_weighted_cross_entropy(
+    pred: Tensor,
+    label: Tensor,
+    weight: Tensor = None,
+    axis: int = 1,
+    with_logits: bool = True,
+    label_smooth: float = 0,
+    reduction: str = "mean",
+) -> Tensor:
+
+    n0 = pred.ndim
+    n1 = label.ndim
+    assert n0 == n1 + 1, ("target ndim must be one less than input ndim; input_ndim={} " "target_ndim={}".format(n0, n1))
+
+    if weight is not None:
+        weight = weight / sum(weight)
+        class_weight = weight[label.flatten().astype(np.int32)].reshape(label.shape)
+
+    ls = label_smooth
+
+    if with_logits:
+        logZ = logsumexp(pred, axis)
+        primary_term = indexing_one_hot(pred, label, axis)
+    else:
+        logZ = 0
+        primary_term = log(indexing_one_hot(pred, label, axis))
+    if ls is None or type(ls) in (int, float) and ls == 0:
+        if weight is None:
+            return logZ - primary_term
+        else:
+            return sum((logZ - primary_term) * class_weight, axis=1, keepdims=True) / sum(class_weight, axis=1, keepdims=True)
+    if not with_logits:
+        pred = log(pred)
+    if weight is None:
+        return logZ - ls * pred.mean(axis) - (1 - ls) * primary_term
+    else:
+        return sum((logZ - ls * pred.mean(axis) -
+                    (1 - ls) * primary_term) * class_weight, axis=1, keepdims=True) / sum(class_weight, axis=1, keepdims=True)
+```
 
 ## Data Preparation
 
