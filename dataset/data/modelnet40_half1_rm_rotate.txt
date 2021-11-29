@@ -1,0 +1,14 @@
+airplane
+bathtub
+bed
+bench
+bookshelf
+car
+chair
+curtain
+desk
+door
+dresser
+glass_box
+guitar
+keyboard
