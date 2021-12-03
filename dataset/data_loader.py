@@ -26,7 +26,6 @@ class ModelNetNpy(Dataset):
         self._logger = logging.getLogger(self.__class__.__name__)
         self._root = dataset_path
         self._subset = subset
-        self._fetcher = nori.Fetcher()
         self._is_master = dist.get_rank() == 0
 
         metadata_fpath = os.path.join(
