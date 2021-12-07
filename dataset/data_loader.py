@@ -119,7 +119,7 @@ def fetch_dataloader(params):
     train_transforms, test_transforms = fetch_transform(params)
 
     if params.dataset_type == "modelnet_os":
-        dataset_path = "/data/code/meg_brain_mine/dataset/data/modelnet_os"
+        dataset_path = "./dataset/data/modelnet_os"
         train_categories = [
             line.rstrip("\n")
             for line in open("./dataset/data/modelnet40_half1_rm_rotate.txt")
@@ -152,7 +152,7 @@ def fetch_dataloader(params):
                               transform=test_transforms)
 
     elif params.dataset_type == "modelnet_ts":
-        dataset_path = "/data/code/meg_brain_mine/dataset/data/modelnet_ts"
+        dataset_path = "./dataset/data/modelnet_ts"
         train_categories = [
             line.rstrip("\n")
             for line in open("./dataset/data/modelnet40_half1_rm_rotate.txt")
