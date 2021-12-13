@@ -49,8 +49,8 @@ def compute_metrics(data_batch, endpoints, params):
     t_mse = F.mean((t_gt - t_pred)**2, axis=1)
     t_mae = F.mean(F.abs(t_gt - t_pred), axis=1)
 
-    r_rmse = F.mean(F.sqrt(r_mse))
-    t_rmse = F.mean(F.sqrt(t_mse))
+    r_mse = F.mean(r_mse)
+    t_mse = F.mean(t_mse)
     r_mae = F.mean(r_mae)
     t_mae = F.mean(t_mae)
 
@@ -66,7 +66,7 @@ def compute_metrics(data_batch, endpoints, params):
     # weighted score of isotropic errors
     score = err_r * 0.01 + err_t
 
-    metrics = {"R_RMSE": r_rmse, "R_MAE": r_mae, "t_RMSE": t_rmse, "t_MAE": t_mae, "Err_R": err_r, "Err_t": err_t, "score": score}
+    metrics = {"R_MSE": r_mse, "R_MAE": r_mae, "t_MSE": t_mse, "t_MAE": t_mae, "Err_R": err_r, "Err_t": err_t, "score": score}
     # metrics = utils.tensor_mge(metrics, check_on=False)
 
     return metrics

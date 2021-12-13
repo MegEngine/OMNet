@@ -67,6 +67,10 @@ class AverageMeter():
         self.sum = 0
         self.count = 0
 
+    def set(self, val):
+        self.val = val
+        self.avg = val
+
     def update(self, val, num):
         self.val_previous = self.val
         self.val = val

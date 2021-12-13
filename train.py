@@ -66,7 +66,7 @@ def train(model, manager: Manager, gm):
 
     if rank == 0:
         t.close()
-
+    
     manager.scheduler.step()
     manager.update_epoch()
 

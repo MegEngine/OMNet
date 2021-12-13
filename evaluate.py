@@ -55,6 +55,9 @@ def evaluate(model, manager):
 
         # update val data to tensorboard
         if rank == 0:
+            # compute RMSE metrics
+            manager.summarize_metric_status(metrics, "val")
+
             manager.writer.add_scalar("Loss/val", manager.loss_status["total"].avg, manager.epoch)
             # manager.logger.info("Loss/valid epoch {}: {:.4f}".format(manager.epoch, manager.loss_status["total"].avg))
             for k, v in manager.val_status.items():
@@ -87,6 +90,9 @@ def evaluate(model, manager):
 
         # update test data to tensorboard
         if rank == 0:
+            # compute RMSE metrics
+            manager.summarize_metric_status(metrics, "test")
+
             manager.writer.add_scalar("Loss/test", manager.loss_status["total"].avg, manager.epoch)
             # manager.logger.info("Loss/test epoch {}: {:.4f}".format(manager.epoch, manager.loss_status["total"].avg))
             for k, v in manager.val_status.items():
@@ -124,6 +130,8 @@ def test(model, manager):
             metrics = compute_metrics(data_batch, output_batch, manager.params)
             manager.update_metric_status(metrics, "val", bs)
 
+        # compute RMSE metrics
+        manager.summarize_metric_status(metrics, "val")
         # For each epoch, update and print the metric
         manager.print_metrics("val", title="Val", color="green")
 
@@ -145,6 +153,8 @@ def test(model, manager):
             metrics = compute_metrics(data_batch, output_batch, manager.params)
             manager.update_metric_status(metrics, "test", bs)
 
+        # compute RMSE metrics
+        manager.summarize_metric_status(metrics, "test")
         # For each epoch, print the metric
         manager.print_metrics("test", title="Test", color="red")
 

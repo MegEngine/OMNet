@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import megengine as mge
 import megengine.distributed as dist
 from collections import defaultdict
@@ -77,6 +78,22 @@ class Manager():
             for k, v in metrics.items():
                 self.test_status[k].update(val=v.item(), num=bs)
                 self.cur_test_score = self.test_status[self.params.major_metric].avg
+        else:
+            raise ValueError("Wrong eval type: {}".format(split))
+
+    def summarize_metric_status(self, metrics, split):
+        if split == "val":
+            for k in metrics:
+                if k.endswith('MSE'):
+                    self.val_status[k[:-3] + 'RMSE'].set(val=np.sqrt(self.val_status[k].avg))
+                else:
+                    continue
+        elif split == "test":
+            for k in metrics:
+                if k.endswith('MSE'):
+                    self.test_status[k[:-3] + 'RMSE'].set(val=np.sqrt(self.test_status[k].avg))
+                else:
+                    continue
         else:
             raise ValueError("Wrong eval type: {}".format(split))
 
