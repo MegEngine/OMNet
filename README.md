@@ -1,6 +1,6 @@
 # [ICCV 2021] OMNet: Learning Overlapping Mask for Partial-to-Partial Point Cloud Registration
 
-This is the official implementation of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf).
+This is the official implementation (MegEngine implementation) of our ICCV2021 paper [OMNet](https://openaccess.thecvf.com/content/ICCV2021/papers/Xu_OMNet_Learning_Overlapping_Mask_for_Partial-to-Partial_Point_Cloud_Registration_ICCV_2021_paper.pdf). For our Pytorch implementation, please refer to [this repo](https://github.com/hxwork/OMNet_Pytorch).
 
 Our presentation video: [[Youtube](https://www.youtube.com/watch?v=u2lTKsom8oU)][[Bilibili](https://www.bilibili.com/video/BV1Ef4y1J7XP/)].
 
