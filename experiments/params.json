@@ -1,5 +1,5 @@
 {
-    "dataset_type": "modelnet_ts_npy",
+    "dataset_type": "modelnet_ts",
     "transform_type": "modelnet_ts_rpmnet_noise",
     "net_type": "omnet",
     "loss_type": "omnet",
