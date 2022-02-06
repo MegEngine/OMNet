@@ -1,8 +1,8 @@
 {
     "dataset_type": "modelnet_ts_npy",
     "transform_type": "modelnet_ts_rpmnet_noise",
-    "net_type": "iter_delaymask_noshare",
-    "loss_type": "iter_l1_l2",
+    "net_type": "omnet",
+    "loss_type": "omnet",
     "loss_alpha1": 1,
     "loss_alpha2": 4,
     "margin": 0.2,
